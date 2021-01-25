@@ -173,16 +173,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 this.classes.forEach(className => element.classList.add(className));
             }
             element.innerHTML =
-                `
-    <img src=${this.src} alt=${this.alt}>
+                `<img src=${this.src} alt=${this.alt}>
     <h3 class="menu__item-subtitle">${this.title}</h3>
     <div class="menu__item-descr">${this.description}</div>
     <div class="menu__item-divider"></div>
     <div class="menu__item-price">
         <div class="menu__item-cost">Цена:</div>
         <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-    </div>
-`;
+    </div>`;
             this.parent.append(element);
         }
     }
@@ -220,4 +218,55 @@ window.addEventListener('DOMContentLoaded', () => {
         'menu__item'
 
     ).render();
+    console.log('dfdg');
+    //form-server
+
+
+    
+    const forms = document.querySelectorAll('form');
+
+console.log('dfdg');
+    const message ={
+        loading:'Загрузка',
+        success:'Спасибо! Скоро мы с вами свяжемся',
+        fuilure:'Что-то пошло не так'
+    }
+forms.forEach(item=>{
+    postData(item);
+});
+    function postData(form){
+form.addEventListener('submit',(e)=>{
+
+    e.preventDefault();
+
+    const statusMessage = document.createElement('div');
+    statusMessage.classList.add('status');
+    statusMessage.textContent=message.loading;
+    form.append(statusMessage);
+
+    const request = new XMLHttpRequest();
+
+    request.open('POST', 'server.php');
+
+//request.setRequestHeader('Content-type', 'multipart/form-data');
+
+    const formData =new FormData(form);
+
+    request.send(formData);
+
+
+    request.addEventListener('load',()=>{
+        if(request.status===200){
+            console.log(request.response);
+            statusMessage.textContent=message.success;
+        }else{
+            statusMessage.textContent=message.fuilure; 
+        }
+    })
+})
+
+    }
+
+
+
 });
