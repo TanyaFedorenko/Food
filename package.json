@@ -1,0 +1,24 @@
+{
+  "name": "food_dist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TanyaFedorenko/Food.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TanyaFedorenko/Food/issues"
+  },
+  "homepage": "https://github.com/TanyaFedorenko/Food#readme",
+  "devDependencies": {
+    "json-server": "^0.16.3",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
+  }
+}
